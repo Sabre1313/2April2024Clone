@@ -3,7 +3,6 @@ import google.generativeai as palm
 import replicate
 import os
 
-os.environ['REPLICATE_API_TOKEN'] = "787f515cb0624813736c11e7fefec66473394f02"
 palm.configure(api_key="AIzaSyCCT1K99BJ1JbLwhCE7qOcQ5KOZcPJ9ZZ4")
 model = {
     "model": "models/chat-bison-001",
@@ -83,9 +82,10 @@ def video_reply():
         "anotherjesse/zeroscope-v2-xl:9f747673945c62801b13b84701c783929c0ee784e4748ec062204894dda1a351",
         input={
             "prompt": q,
-            "num_frames": 20
+            "num_frames": 3
         }
     )
+    time.sleep(60)
     return(render_template("video_reply.html",r=r[0]))
 
 if __name__ == "__main__":
